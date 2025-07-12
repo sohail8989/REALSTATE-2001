@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Realstate Investment</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 0; padding: 0; }
+    .container { max-width: 700px; margin: 30px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h2, h3 { text-align: center; }
+    .plans { margin-top: 20px; }
+    .plan { padding: 15px; background: #f0f0f0; margin-bottom: 15px; border-radius: 8px; }
+    .buy-btn { width: 100%; padding: 12px; font-size: 16px; background: #28a745; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+    .buy-btn:hover { background: #218838; }
+    input[type=file], button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    .note { font-size: 0.9em; color: #555; margin-top: 30px; text-align: center; }
+    .balance-box { text-align: center; margin: 20px 0; padding: 15px; background: #e2ffe2; border-radius: 8px; font-size: 18px; }
+    .withdraw-btn { background: #007bff; color: white; border: none; border-radius: 6px; padding: 12px; cursor: pointer; margin-top: 10px; }
+    .withdraw-btn:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  
+    <div class="container">
+      <div style="text-align: right;">
+        <button onclick="login()" style="background: #db4437; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; margin-bottom: 10px;">
+          🔐 Login with Google
+        </button>
+      </div>
+    
+    <h2>Realstate Investment</h2>
+
+    <div class="balance-box">
+      <strong>Total Balance:</strong><br/>PKR <span id="balance">0</span>
+      <button class="withdraw-btn" onclick="withdraw()">Withdraw</button>
+    </div>
+
+    <h3>Upload Payment Screenshot</h3>
+    <input type="file" id="screenshot" />
+    <button onclick="uploadScreenshot()">Upload Screenshot</button>
+
+    <div class="plans">
+      <h3>25 Investment Plans (15% Daily Profit × 90 Days)</h3>
+
+    <div class="plan" id="plan1">
+      <strong>Plan 1</strong><br/>
+      Amount: PKR 20,000<br/>
+      Daily Profit (15%): PKR 3,000<br/>
+      Total in 90 Days: PKR 270,000<br/>
+      <button class="buy-btn" onclick="buyPlan(20000, 'plan1')">Buy This Plan</button>
+      <div class="payment-info" id="plan1-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan2">
+      <strong>Plan 2</strong><br/>
+      Amount: PKR 40,000<br/>
+      Daily Profit (15%): PKR 6,000<br/>
+      Total in 90 Days: PKR 540,000<br/>
+      <button class="buy-btn" onclick="buyPlan(40000, 'plan2')">Buy This Plan</button>
+      <div class="payment-info" id="plan2-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan3">
+      <strong>Plan 3</strong><br/>
+      Amount: PKR 60,000<br/>
+      Daily Profit (15%): PKR 9,000<br/>
+      Total in 90 Days: PKR 810,000<br/>
+      <button class="buy-btn" onclick="buyPlan(60000, 'plan3')">Buy This Plan</button>
+      <div class="payment-info" id="plan3-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan4">
+      <strong>Plan 4</strong><br/>
+      Amount: PKR 80,000<br/>
+      Daily Profit (15%): PKR 12,000<br/>
+      Total in 90 Days: PKR 1,080,000<br/>
+      <button class="buy-btn" onclick="buyPlan(80000, 'plan4')">Buy This Plan</button>
+      <div class="payment-info" id="plan4-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan5">
+      <strong>Plan 5</strong><br/>
+      Amount: PKR 100,000<br/>
+      Daily Profit (15%): PKR 15,000<br/>
+      Total in 90 Days: PKR 1,350,000<br/>
+      <button class="buy-btn" onclick="buyPlan(100000, 'plan5')">Buy This Plan</button>
+      <div class="payment-info" id="plan5-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan6">
+      <strong>Plan 6</strong><br/>
+      Amount: PKR 120,000<br/>
+      Daily Profit (15%): PKR 18,000<br/>
+      Total in 90 Days: PKR 1,620,000<br/>
+      <button class="buy-btn" onclick="buyPlan(120000, 'plan6')">Buy This Plan</button>
+      <div class="payment-info" id="plan6-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan7">
+      <strong>Plan 7</strong><br/>
+      Amount: PKR 140,000<br/>
+      Daily Profit (15%): PKR 21,000<br/>
+      Total in 90 Days: PKR 1,890,000<br/>
+      <button class="buy-btn" onclick="buyPlan(140000, 'plan7')">Buy This Plan</button>
+      <div class="payment-info" id="plan7-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan8">
+      <strong>Plan 8</strong><br/>
+      Amount: PKR 160,000<br/>
+      Daily Profit (15%): PKR 24,000<br/>
+      Total in 90 Days: PKR 2,160,000<br/>
+      <button class="buy-btn" onclick="buyPlan(160000, 'plan8')">Buy This Plan</button>
+      <div class="payment-info" id="plan8-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan9">
+      <strong>Plan 9</strong><br/>
+      Amount: PKR 180,000<br/>
+      Daily Profit (15%): PKR 27,000<br/>
+      Total in 90 Days: PKR 2,430,000<br/>
+      <button class="buy-btn" onclick="buyPlan(180000, 'plan9')">Buy This Plan</button>
+      <div class="payment-info" id="plan9-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan10">
+      <strong>Plan 10</strong><br/>
+      Amount: PKR 200,000<br/>
+      Daily Profit (15%): PKR 30,000<br/>
+      Total in 90 Days: PKR 2,700,000<br/>
+      <button class="buy-btn" onclick="buyPlan(200000, 'plan10')">Buy This Plan</button>
+      <div class="payment-info" id="plan10-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan11">
+      <strong>Plan 11</strong><br/>
+      Amount: PKR 220,000<br/>
+      Daily Profit (15%): PKR 33,000<br/>
+      Total in 90 Days: PKR 2,970,000<br/>
+      <button class="buy-btn" onclick="buyPlan(220000, 'plan11')">Buy This Plan</button>
+      <div class="payment-info" id="plan11-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan12">
+      <strong>Plan 12</strong><br/>
+      Amount: PKR 240,000<br/>
+      Daily Profit (15%): PKR 36,000<br/>
+      Total in 90 Days: PKR 3,240,000<br/>
+      <button class="buy-btn" onclick="buyPlan(240000, 'plan12')">Buy This Plan</button>
+      <div class="payment-info" id="plan12-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan13">
+      <strong>Plan 13</strong><br/>
+      Amount: PKR 260,000<br/>
+      Daily Profit (15%): PKR 39,000<br/>
+      Total in 90 Days: PKR 3,510,000<br/>
+      <button class="buy-btn" onclick="buyPlan(260000, 'plan13')">Buy This Plan</button>
+      <div class="payment-info" id="plan13-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan14">
+      <strong>Plan 14</strong><br/>
+      Amount: PKR 280,000<br/>
+      Daily Profit (15%): PKR 42,000<br/>
+      Total in 90 Days: PKR 3,780,000<br/>
+      <button class="buy-btn" onclick="buyPlan(280000, 'plan14')">Buy This Plan</button>
+      <div class="payment-info" id="plan14-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan15">
+      <strong>Plan 15</strong><br/>
+      Amount: PKR 300,000<br/>
+      Daily Profit (15%): PKR 45,000<br/>
+      Total in 90 Days: PKR 4,050,000<br/>
+      <button class="buy-btn" onclick="buyPlan(300000, 'plan15')">Buy This Plan</button>
+      <div class="payment-info" id="plan15-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan16">
+      <strong>Plan 16</strong><br/>
+      Amount: PKR 320,000<br/>
+      Daily Profit (15%): PKR 48,000<br/>
+      Total in 90 Days: PKR 4,320,000<br/>
+      <button class="buy-btn" onclick="buyPlan(320000, 'plan16')">Buy This Plan</button>
+      <div class="payment-info" id="plan16-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan17">
+      <strong>Plan 17</strong><br/>
+      Amount: PKR 340,000<br/>
+      Daily Profit (15%): PKR 51,000<br/>
+      Total in 90 Days: PKR 4,590,000<br/>
+      <button class="buy-btn" onclick="buyPlan(340000, 'plan17')">Buy This Plan</button>
+      <div class="payment-info" id="plan17-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan18">
+      <strong>Plan 18</strong><br/>
+      Amount: PKR 360,000<br/>
+      Daily Profit (15%): PKR 54,000<br/>
+      Total in 90 Days: PKR 4,860,000<br/>
+      <button class="buy-btn" onclick="buyPlan(360000, 'plan18')">Buy This Plan</button>
+      <div class="payment-info" id="plan18-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan19">
+      <strong>Plan 19</strong><br/>
+      Amount: PKR 380,000<br/>
+      Daily Profit (15%): PKR 57,000<br/>
+      Total in 90 Days: PKR 5,130,000<br/>
+      <button class="buy-btn" onclick="buyPlan(380000, 'plan19')">Buy This Plan</button>
+      <div class="payment-info" id="plan19-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan20">
+      <strong>Plan 20</strong><br/>
+      Amount: PKR 400,000<br/>
+      Daily Profit (15%): PKR 60,000<br/>
+      Total in 90 Days: PKR 5,400,000<br/>
+      <button class="buy-btn" onclick="buyPlan(400000, 'plan20')">Buy This Plan</button>
+      <div class="payment-info" id="plan20-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan21">
+      <strong>Plan 21</strong><br/>
+      Amount: PKR 420,000<br/>
+      Daily Profit (15%): PKR 63,000<br/>
+      Total in 90 Days: PKR 5,670,000<br/>
+      <button class="buy-btn" onclick="buyPlan(420000, 'plan21')">Buy This Plan</button>
+      <div class="payment-info" id="plan21-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan22">
+      <strong>Plan 22</strong><br/>
+      Amount: PKR 440,000<br/>
+      Daily Profit (15%): PKR 66,000<br/>
+      Total in 90 Days: PKR 5,940,000<br/>
+      <button class="buy-btn" onclick="buyPlan(440000, 'plan22')">Buy This Plan</button>
+      <div class="payment-info" id="plan22-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan23">
+      <strong>Plan 23</strong><br/>
+      Amount: PKR 460,000<br/>
+      Daily Profit (15%): PKR 69,000<br/>
+      Total in 90 Days: PKR 6,210,000<br/>
+      <button class="buy-btn" onclick="buyPlan(460000, 'plan23')">Buy This Plan</button>
+      <div class="payment-info" id="plan23-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan24">
+      <strong>Plan 24</strong><br/>
+      Amount: PKR 480,000<br/>
+      Daily Profit (15%): PKR 72,000<br/>
+      Total in 90 Days: PKR 6,480,000<br/>
+      <button class="buy-btn" onclick="buyPlan(480000, 'plan24')">Buy This Plan</button>
+      <div class="payment-info" id="plan24-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    <div class="plan" id="plan25">
+      <strong>Plan 25</strong><br/>
+      Amount: PKR 500,000<br/>
+      Daily Profit (15%): PKR 75,000<br/>
+      Total in 90 Days: PKR 6,750,000<br/>
+      <button class="buy-btn" onclick="buyPlan(500000, 'plan25')">Buy This Plan</button>
+      <div class="payment-info" id="plan25-info" style="display:none; margin-top:10px; padding:10px; background:#e6f7ff; border-radius:5px;">
+        <strong>Send Payment To:</strong><br/>
+        Easypaisa: M. Farhan (03319915139)<br/>
+        JazzCash: Amir Sohail (03499780098)
+      </div>
+    </div>
+    
+    </div>
+    <p class="note">Order confirmation will be sent to: sohail8989s@gmail.com</p>
+  </div>
+
+  <script>
+    let totalBalance = 0;
+    function uploadScreenshot() {
+      alert('Screenshot uploaded successfully!');
+    }
+    function buyPlan(amount, planId) {
+      totalBalance += amount * 0.15;
+      document.getElementById('balance').innerText = totalBalance.toLocaleString();
+      var infoBox = document.getElementById(planId + '-info');
+      infoBox.style.display = infoBox.style.display === 'none' ? 'block' : 'none';
+    }
+    function withdraw() {
+      if (totalBalance > 0) {
+        alert('Withdraw request sent for PKR ' + totalBalance.toLocaleString());
+        totalBalance = 0;
+        document.getElementById('balance').innerText = totalBalance;
+      } else {
+        alert('Your balance is zero.');
+      }
+    }
+  
+    function login() {
+      alert('Login successful! (UI only)');
+    }
+    </script>
+
+</body>
+</html>
